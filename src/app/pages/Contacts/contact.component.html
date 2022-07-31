@@ -1,0 +1,27 @@
+<page-header title="contacts" subtitle="Lists of contacts" icon="fas fa-users"></page-header>
+
+<table>
+    
+    <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Phone Number</th>
+        <th>eMail Address</th>
+    </tr>
+
+    <tr *ngIf="contacts.length; else noContancts">
+        
+    </tr>
+
+    <tr *ngFor="let contact of contacts">
+        <td>{{ contact.id }}</td>
+        <td>{{ contact.firstName + " " + contact.lastName }} </td>
+        <td>{{ contact.phone }}</td>
+        <td>{{ contact.eMail }}</td>
+    </tr>
+
+</table>
+
+<ng-template #noContancts>
+    <td class="text-center" colspan="4">{{ 'no contacts found' | titlecase }}</td>
+</ng-template>

@@ -21,6 +21,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { TextCapitalPipe } from './pipes/text-capital.pipe';
+import { FormsModule } from '@angular/forms';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 
 @NgModule({
@@ -45,10 +47,13 @@ import { TextCapitalPipe } from './pipes/text-capital.pipe';
     LogoutComponent,
     PageHeaderComponent,
     TextCapitalPipe,
+    LoginPageComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

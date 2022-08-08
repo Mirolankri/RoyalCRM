@@ -48,4 +48,17 @@ export class ContactsService {
   getAll(): Contact[]{
     return this.contacts;
   }
+  delete(id: string){
+    let contactsIndex = this.contacts.findIndex((contacts: Contact) => contacts.id === id);
+
+    if(contactsIndex === -1) return;
+    this.contacts.splice(contactsIndex, 1);
+  }
+  getContact(id:string){
+    let contact = this.contacts.find((contact:Contact)=> contact.id === id );
+    
+    if(!contact) return
+    return contact
+
+  }
 }

@@ -1,0 +1,19 @@
+<page-header title="customer details" subtitle="all details for customer" icon="fas fa-user-plus">
+</page-header>
+
+<div class="m-2">
+    <a routerLink="/customers" class="btn btn-outline-success"><i class="fa fa-arrow-alt-circle-left"></i>{{' back ' | titlecase}}</a>
+</div>
+
+
+<div *ngIf="customer; else nocustomer">
+    <div class="h1 text-center">{{customer.firstName | textCapital}} {{customer.lastName | textCapital}}</div>
+<div class="table w-75 m-auto">
+<div class="row">1</div>
+<div class="row">2</div>
+<div class="row">3</div>
+</div>
+</div>
+
+
+<ng-template #nocustomer>לא נמצאו נתונים</ng-template>

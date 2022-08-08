@@ -13,8 +13,16 @@ export class ContactComponent {
 
   contacts: Contact[] = [];
 
-  constructor(con: ContactsService) {
+  constructor(private con: ContactsService) {
     this.contacts = con.getAll();
   }
+
+  deletecustomer(e:MouseEvent,id:string)
+  {
+    e.stopPropagation();
+    console.log(id);
+    this.con.delete(id)
+  }
+
 
 }

@@ -8,7 +8,7 @@ import { SideNavLink } from './side-nav-links/side-nav-link';
 })
 export class SideNavComponent {
   links: SideNavLink[] = [
-    {icon: 'fas fa-users', link: 'costumers', text: 'costumers'},
+    {icon: 'fas fa-users', link: 'customers', text: 'customers'},
     {icon: 'fas fa-address-book', link: 'contacts', text: 'contacts'}
   ]
 

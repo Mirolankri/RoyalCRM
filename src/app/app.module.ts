@@ -23,6 +23,11 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
 import { TextCapitalPipe } from './pipes/text-capital.pipe';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { NewcustomerComponent } from './pages/customers/newcustomer/newcustomer.component';
+import { CustomersComponent } from './pages/customers/customers.component';
+import { CustomerPageComponent } from './pages/customers/customer-page/customer-page.component';
+import { CustomerDetailsComponent } from './pages/customers/customer-details/customer-details.component';
+import { ContactDetailsComponent } from './pages/Contacts/contact-details/contact-details.component';
 
 
 @NgModule({
@@ -47,7 +52,12 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     LogoutComponent,
     PageHeaderComponent,
     TextCapitalPipe,
-    LoginPageComponent
+    LoginPageComponent,
+    NewcustomerComponent,
+    CustomersComponent,
+    CustomerPageComponent,
+    CustomerDetailsComponent,
+    ContactDetailsComponent
     
   ],
   imports: [

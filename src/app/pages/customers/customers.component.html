@@ -1,0 +1,40 @@
+<page-header title="customers" subtitle="this is the customers page" icon="fas fa-users"></page-header>
+
+<div class="m-2">
+    <a routerLink="newcustomer" class="btn  btn-outline-success">{{'add customer +' | titlecase}}</a>
+</div>
+
+<table *ngIf="customers.length; else noCustomers" class="table">
+    <thead>
+      <tr>
+        <th>{{ "Num." | titlecase }}</th>
+        <th>Name</th>
+        <th>Surname</th>    
+        <th>Phone</th>
+        <th>Email</th>
+        <th>{{ "edit" | titlecase }}</th>
+        <th>{{ "delete" | titlecase }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        [ngClass]="odd ? 'bg-gray' : 'bg-light'"
+        *ngFor="let customer of customers; index as i; odd as odd"
+        [routerLink]="['customer-details',customer.id]"
+      >
+        <td>{{ i + 1 }}</td>
+        <td>{{ customer.firstName | textCapital }}</td>
+        <td>{{ customer.lastName | textCapital }}</td>
+        <td>{{ customer.phone }}</td>
+        <td>{{ customer.email }}</td>
+        <td><button class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
+        <td><button class="btn btn-danger" (click)="deletecustomer($event,customer.id!)"><i class="fa fa-trash"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <ng-template #noCustomers>
+    <div class="p-2">
+      {{ "no Customers where found in the database" | textCapital }}
+    </div>
+  </ng-template>

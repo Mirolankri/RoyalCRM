@@ -1,0 +1,25 @@
+li{
+    // padding: 10px 20px;
+    position: relative;
+
+    a{
+        color: #fff;
+        text-decoration: none;
+    }
+
+    &:hover{
+        background-color: #333;
+    }
+
+    // &::after{
+    //     content: '\f105';
+    //     position: absolute;
+    //     color: #fff;
+    //     right: 20px;
+    //     font-family: FontAwesome;
+    // }
+
+    .active{
+        background-color: #000;
+    }
+}

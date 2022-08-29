@@ -35,7 +35,7 @@
             <th>{{ "phone" | titlecase }}</th>
             <td>{{ customer.phone }}</td>
           </tr>
-          <tr *ngIf="customer.address">
+          <tr>
             <th>{{ "address" | titlecase }}</th>
             <td>
               <table class="table m-0">
@@ -72,9 +72,9 @@
               </table>
             </td>
           </tr>
-          <tr *ngIf="customer.notes">
+          <tr *ngIf="customer.note">
             <th>{{ "notes" | titlecase }}</th>
-            <td>{{ customer.notes }}</td>
+            <td>{{ customer.note }}</td>
           </tr>
         </tbody>
       </table>

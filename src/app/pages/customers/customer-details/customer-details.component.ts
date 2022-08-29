@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Customer } from '../customer';
-import { CustomerService } from '../customer.service';
+import { CustomersService } from '../customers.service';
 
 @Component({
   selector: 'app-customer-details',
   templateUrl: './customer-details.component.html',
-  styles: [],
+  styles: [
+  ]
 })
-export class CustomerDetailsComponent implements OnInit {
+export class CustomerDetailsComponent {
+
   customer: Customer | void = undefined;
-  constructor(private AR: ActivatedRoute, private CS: CustomerService) {}
+
+  constructor( private AR: ActivatedRoute, private CS: CustomersService ) {}
 
   ngOnInit(): void {
-    this.AR.paramMap.subscribe((param: ParamMap) => {
+    this.AR.paramMap.subscribe((param: ParamMap)=>{
       const id = param.get('id');
-      this.customer = this.CS.getCustomer(
-        id!,
-        (customer: Customer | void) => (this.customer = customer)
-      );
-    });
+      this.CS.getCustomer(id!, (customer: Customer | void) => {(this.customer = customer)});
+    })
   }
+
 }

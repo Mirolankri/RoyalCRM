@@ -1,0 +1,2 @@
+<page-header title="edit contact" subtitle="edit the contact" icon="fas fa-users"></page-header>
+<contact-form *ngIf="contact" [contact]="contact" (submit)="onSubmit($event)" (reset)="resetForm()"></contact-form>

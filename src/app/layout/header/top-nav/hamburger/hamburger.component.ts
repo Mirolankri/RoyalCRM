@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-hamburger',
+  selector: 'hamburger-component',
   templateUrl: './hamburger.component.html',
-  styles: [
-  ]
+  styleUrls: ['./hamburger.component.scss']
 })
 export class HamburgerComponent implements OnInit {
 

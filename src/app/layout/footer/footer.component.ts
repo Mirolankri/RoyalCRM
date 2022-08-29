@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styles: [],
+  templateUrl: './footer.component.html'
 })
-export class FooterComponent {
-  createdAt: Date = new Date();
+export class FooterComponent  {
+  createdBy: string = "Krakov.co";
+  copyYear: number = new Date().getFullYear();
+
+  constructor() { }
+
 }

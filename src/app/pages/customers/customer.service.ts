@@ -2,66 +2,76 @@ import { Injectable } from '@angular/core';
 import { Customer } from './customer';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class CustomersService {
+export class CustomerService {
   private customers: Customer[] = [
-  {
-    id: "1234",
-    firstName: "miro",
-    lastName: "lankri",
-    email: "miro@istoreil.co.il",
-    phone: "0542412241",
-    createdAt: new Date(),
-    address: {
-      state: "fdfdf",
-      country: "dfdfd",
-      city: "fdfd",
-      street: "dsds",
-      houseNumber: 2
-  },
-    noote: "dfgd"
+    {
+      _id: 'myIdIs1',
+      firstName: 'Regular',
+      lastName: 'User',
+      email: 'user@gmail.com',
+      phone: '050-0000000',
+      address: {
+        country: 'israel',
+        city: 'tel-aviv',
+        street: 'rotshild',
+        houseNumber: 0,
+        zip: 1234,
+      },
+      createdAt: new Date(),
+      notes: 'a very good customer!',
     },
     {
-      id: "1235",
-      firstName: "ben",
-      lastName: "krk",
-      email: "ben@istoreil.co.il",
-      phone: "0542412241",
-      createdAt: new Date(),
+      _id: '2',
+      firstName: 'admin',
+      lastName: 'User',
+      email: 'admin@gmail.com',
+      phone: '050-0000000',
       address: {
-        state: "fdfdf",
-        country: "dfdfd",
-        city: "fdfd",
-        street: "dsds",
-        houseNumber: 2
+        country: 'israel',
+        city: 'tel-aviv',
+        street: 'rotshild',
+        houseNumber: 0,
+        zip: 1234,
+      },
+      createdAt: new Date(),
+      notes: 'a very bad customer!',
     },
-      noote: "dfgd"
-      }
-
   ];
 
   getAll(): Customer[] {
     return this.customers;
   }
 
-  add(customer: Customer){
-    customer.id = String( this.customers.length ) + new Date() + Math.random();
-    return this.customers.push(customer);
+  add(customer: Customer) {
+    customer._id =
+      String(this.customers.length + 1) + new Date() + Math.random();
+    customer.createdAt = new Date();
+    this.customers.push(customer);
+    return;
   }
 
-  delete(id: string){
-    let customerIndex = this.customers.findIndex((customer: Customer) => customer.id === id);
+  getCustomer(id: string, cb: Function): Customer | void {
+    const customer = this.customers.find(
+      (customerFromDb: Customer) => customerFromDb._id === id
+    );
+    return cb(customer);
+  }
 
-    if(customerIndex === -1) return;
+  delete(id: string) {
+    let customerIndex = this.customers.findIndex(
+      (customer: Customer) => customer._id === id
+    );
+    if (customerIndex === -1) return;
     this.customers.splice(customerIndex, 1);
   }
-  getCustomer(id:string)
-  {
-    
-    let customer = this.customers.find((customer:Customer)=> customer.id === id );
-    
-    if(!customer) return
-    return customer
+
+  edit(customer: Customer) {
+    let index = this.customers.findIndex(
+      (customerFromDb) => customerFromDb._id === customer._id
+    );
+    if (index === -1) return;
+    this.customers[index] = customer;
   }
 }

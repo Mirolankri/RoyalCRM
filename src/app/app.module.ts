@@ -2,72 +2,66 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './root/app.component';
+import { CustomersPageComponent } from './pages/Customers/customers-page/customers-page.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MainComponent } from './layout/main/main.component';
 import { SideNavComponent } from './layout/main/side-nav/side-nav.component';
 import { LogoComponent } from './layout/header/top-nav/logo/logo.component';
 import { HamburgerComponent } from './layout/header/top-nav/hamburger/hamburger.component';
-import { RightMenuComponent } from './layout/header/top-nav/right-menu/right-menu.component';
-import { LeftMenuComponent } from './layout/header/top-nav/left-menu/left-menu.component';
-import { LoggedInComponent } from './layout/header/top-nav/right-menu/logged-in/logged-in.component';
-import { LoginComponent } from './layout/header/top-nav/right-menu/login/login.component';
-import { DecoratorsComponent } from './components/decorators/decorators.component';
-import { ContactComponent } from './pages/Contacts/contact.component';
-import { ErrorPageComponent } from './pages/Error-page/error-page.component';
-import { SideNavLinksComponent } from './layout/main/side-nav/side-nav-links/side-nav-links.component';
-import { AboutComponent } from './pages/about/about.component';
-import { SignupComponent } from './pages/signup/signup.component';
-import { LogoutComponent } from './pages/logout/logout.component';
+import { LeftTopNavComponent } from './layout/header/top-nav/left-top-nav/left-top-nav.component';
+import { RightTopNavComponent } from './layout/header/top-nav/right-top-nav/right-top-nav.component';
+import { LoggedComponent } from './layout/header/top-nav/right-top-nav/logged/logged.component';
+import { NotLoggedComponent } from './layout/header/top-nav/right-top-nav/not-logged/not-logged.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { TopNavLinkComponent } from './layout/header/top-nav/top-nav-link/top-nav-link.component';
 import { TextCapitalPipe } from './pipes/text-capital.pipe';
+import { SideNavLinkComponent } from './layout/main/side-nav/side-nav-link/side-nav-link.component';
+import { ContactsPageComponent } from './pages/Contacts/contacts-page/contacts-page.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { NewcustomerComponent } from './pages/customers/newcustomer/newcustomer.component';
-import { CustomersComponent } from './pages/customers/customers.component';
-import { CustomerPageComponent } from './pages/customers/customer-page/customer-page.component';
-import { CustomerDetailsComponent } from './pages/customers/customer-details/customer-details.component';
-import { ContactDetailsComponent } from './pages/Contacts/contact-details/contact-details.component';
+import { NewCustomerComponent } from './pages/Customers/new-customer/new-customer.component';
+import { CustomerFormComponent } from './pages/Customers/customer-form/customer-form.component';
+import { CustomerDetailsComponent } from './pages/Customers/customer-details/customer-details.component';
+import { EditCustomerComponent } from './pages/Customers/edit-customer/edit-customer.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-
+import { CustomersFoldersComponent } from './pages/Customers/customers-display-mode/customers-folders/customers-folders.component';
+import { CustomersTableComponent } from './pages/Customers/customers-display-mode/customers-table/customers-table.component';
+import { DisplayModeControllersComponent } from './components/display-mode-controllers/display-mode-controllers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactComponent,
+    CustomersPageComponent,
     HeaderComponent,
     FooterComponent,
     MainComponent,
     SideNavComponent,
     LogoComponent,
     HamburgerComponent,
-    RightMenuComponent,
-    LeftMenuComponent,
-    LoggedInComponent,
-    LoginComponent,
-    DecoratorsComponent,
-    ErrorPageComponent,
-    SideNavLinksComponent,
-    AboutComponent,
-    SignupComponent,
-    LogoutComponent,
+    LeftTopNavComponent,
+    RightTopNavComponent,
+    LoggedComponent,
+    NotLoggedComponent,
     PageHeaderComponent,
+    TopNavLinkComponent,
     TextCapitalPipe,
+    SideNavLinkComponent,
+    ContactsPageComponent,
+    ErrorPageComponent,
     LoginPageComponent,
-    NewcustomerComponent,
-    CustomersComponent,
-    CustomerPageComponent,
+    NewCustomerComponent,
+    CustomerFormComponent,
     CustomerDetailsComponent,
-    ContactDetailsComponent,
-    SearchBarComponent
-    
+    EditCustomerComponent,
+    SearchBarComponent,
+    CustomersFoldersComponent,
+    CustomersTableComponent,
+    DisplayModeControllersComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,5 +1,9 @@
-<ul *ngIf="links.length; else noLinks">
-    <side-nav-links *ngFor="let link of links" [icon]="link.icon" [link]="link.link" [text]="link.text"></side-nav-links>
+<ul *ngIf="links.length; else noLinks" class="p-0 m-0">
+  <side-nav-link *ngFor="let link of links" [link]="link"></side-nav-link>
 </ul>
 
-<ng-template #noLinks>Enter Links!</ng-template>
+<ng-template #noLinks>
+  <ul>
+    <li class="nav-link text-light px-2">Enter links!</li>
+  </ul></ng-template
+>

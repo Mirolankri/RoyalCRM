@@ -3,18 +3,18 @@ import { NgForm } from '@angular/forms';
 import { Login } from './login';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  styles: [],
 })
 export class LoginPageComponent {
-  login:Login = {email:'',password:''}
-  onSubmit({value, valid}: NgForm){
+  login: Login = { email: '', password: '' };
+
+  onSubmit({ value, valid }: NgForm) {
     console.log(value);
-    console.log(valid);
   }
 
-  resetForm(form: NgForm){
-    form.resetForm({email: '', password: ''});
+  resetForm(form: NgForm) {
+    form.resetForm();
   }
 }

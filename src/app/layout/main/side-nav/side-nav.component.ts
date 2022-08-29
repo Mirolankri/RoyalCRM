@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
-import { SideNavLink } from './side-nav-links/side-nav-link';
+import { SideNavLink } from './side-nav-link/side-nav-link';
 
 @Component({
   selector: 'side-nav',
   templateUrl: './side-nav.component.html',
-  styleUrls: ['./side-nav.component.scss']
+  styles: [],
 })
 export class SideNavComponent {
   links: SideNavLink[] = [
-    {icon: 'fas fa-users', link: 'customers', text: 'customers'},
-    {icon: 'fas fa-address-book', link: 'contacts', text: 'contacts'}
-  ]
-
-  constructor() { }
+    { icon: 'fas fa-users', link: 'customers', text: 'customers' },
+    { icon: 'fas fa-address-book', link: 'contacts', text: 'contacts' },
+  ];
 }

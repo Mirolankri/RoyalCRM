@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Category } from 'src/app/components/search-bar/category';
 import { Customer } from '../customer';
 import { CustomersService } from '../customer.service';
 
@@ -11,7 +12,6 @@ import { CustomersService } from '../customer.service';
 export class CustomerDetailsComponent implements OnInit {
 
   customer : Customer | void = undefined;
-
   constructor(private router:ActivatedRoute,private CS:CustomersService)
   {
     

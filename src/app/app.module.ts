@@ -28,6 +28,7 @@ import { CustomersComponent } from './pages/customers/customers.component';
 import { CustomerPageComponent } from './pages/customers/customer-page/customer-page.component';
 import { CustomerDetailsComponent } from './pages/customers/customer-details/customer-details.component';
 import { ContactDetailsComponent } from './pages/Contacts/contact-details/contact-details.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { ContactDetailsComponent } from './pages/Contacts/contact-details/contac
     CustomersComponent,
     CustomerPageComponent,
     CustomerDetailsComponent,
-    ContactDetailsComponent
+    ContactDetailsComponent,
+    SearchBarComponent
     
   ],
   imports: [

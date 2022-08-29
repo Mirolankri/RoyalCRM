@@ -4,6 +4,8 @@
     <a routerLink="newcustomer" class="btn  btn-outline-success">{{'add customer +' | titlecase}}</a>
 </div>
 
+<app-search-bar [categories]="categories"></app-search-bar>
+
 <table *ngIf="customers.length; else noCustomers" class="table">
     <thead>
       <tr>

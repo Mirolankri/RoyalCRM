@@ -1,37 +1,25 @@
 <page-header title="contacts" subtitle="Lists of contacts" icon="fas fa-users"></page-header>
 
-<div class="m-2">
+<div class="d-flex justify-content-between">
+  <div class="m-2">
     <a routerLink="new-contact" class="btn  btn-outline-success">{{'add contact +' | titlecase}}</a>
+  </div>
+  <app-display-mode-controllers [controllers]="controllers" (onChangeDisplay)="onChangeDisplay($event)">
+  </app-display-mode-controllers>
 </div>
 
-<table *ngIf="contacts.length; else noContancts" class="table">
-    <thead>
-        <tr>
-            <th>{{ 'id' | textCapital }}</th>
-            <th>{{ 'Full Name' | textCapital }}</th>
-            <th>{{ 'Phone Number' | textCapital }}</th>
-            <th>{{ 'eMail Address' | textCapital }}</th>
-            <th>{{ 'edit' | textCapital }}</th>
-            <th>{{ 'delete' | textCapital }}</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr *ngFor="let contact of contacts; index as i; odd as odd" [ngClass]="odd ? 'alert-success' : 'bg-light'" [routerLink]="['contact-details', contact.id]" role="button">
-            <td>{{ contact.id }}</td>
-            <td>{{ contact.firstName + " " + contact.lastName }} </td>
-            <td>{{ contact.phone }}</td>
-            <td>{{ contact.eMail }}</td>
-            <td><a class="btn btn-outline-dark" [routerLink]="['edit-contact', contact.id]" role="button">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </a></td>
-            <td><button class="btn btn-outline-dark" (click)="deleteContact($event, contact.id!)"><i class="fas fa-trash"></i></button></td>
-        </tr>
-    </tbody>
+<search-bar [categories]="categories" (arrayFiltered)="onSearch($event)" [array]="contactsData"></search-bar>
 
 
-</table>
+<div *ngIf="contacts && contacts.length; else noContancts">
+
+  <app-contacts-table *ngIf="display === 'table'" [contacts]="contacts"></app-contacts-table>
+
+  <app-contacts-folder *ngIf="display === 'folder'" [contacts]="contacts" ></app-contacts-folder>
+</div>
+
+
 
 <ng-template #noContancts>
-    <td class="text-center" colspan="6">{{ 'no contacts found' | titlecase }}</td>
+  <td class="text-center" colspan="6">{{ 'no contacts found' | titlecase }}</td>
 </ng-template>

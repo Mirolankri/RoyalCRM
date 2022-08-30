@@ -35,6 +35,9 @@ import { ContactFormComponent } from './pages/Contacts/contact-form/contact-form
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CustomersFolderComponent } from './pages/Customers/customers-display-modes/customers-folder/customers-folder.component';
 import { RxjsObservableComponent } from './components/rxjs-observable/rxjs-observable.component';
+import { DisplayModeControllersComponent } from './components/display-mode-controllers/display-mode-controllers.component';
+import { ContactsTableComponent } from './pages/Contacts/contact-display-mode/contacts-table/contacts-table.component';
+import { ContactsFolderComponent } from './pages/Contacts/contact-display-mode/contacts-folder/contacts-folder.component';
 
 
 @NgModule({
@@ -71,7 +74,10 @@ import { RxjsObservableComponent } from './components/rxjs-observable/rxjs-obser
     ContactFormComponent,
     SearchBarComponent,
     CustomersFolderComponent,
-    RxjsObservableComponent
+    RxjsObservableComponent,
+    DisplayModeControllersComponent,
+    ContactsTableComponent,
+    ContactsFolderComponent
   ],
   imports: [
     BrowserModule,

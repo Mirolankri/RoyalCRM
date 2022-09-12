@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Login } from './login';
+import { Router } from '@angular/router';
+import { UserService } from '../Users/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -8,14 +9,48 @@ import { Login } from './login';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  login: Login = {email: '', password: ''}
+  error: boolean = false;
+  counter: number = 0;
+  threeFaildAttemptsToLogin: boolean = false;
+
+  constructor(private US: UserService, private router: Router) {}
   
-  onSubmit({value, valid}: NgForm){
+  onSubmit(form: NgForm){
+    const {value, valid} = form;
+    if(valid){
+      this.US.loginWithEmailAndPassword(value, (user: any): any=>{
+        if(user) {
+          this.error = false;
+          return this.router.navigate(['/customers']);
+        }
+        this.error = true;
+        form.resetForm();
+        setTimeout(()=>{
+          this.error = false;
+          this.counter++;
+        }, 4000);
+
+        if(this.counter === 2){
+          this.threeFaildAttemptsToLogin = true;
+
+          setTimeout(()=>{
+            this.counter = 0;
+            this.threeFaildAttemptsToLogin = false;
+          },60_000);
+        }
+      })
+    }
     console.log(value);
     console.log(valid);
   }
 
   resetForm(form: NgForm){
     form.resetForm();
+  }
+
+  loginWithGoogle() {
+    this.US.signupAndLoginWithGoogle((user: any): any=>{
+      if (user) return this.router.navigate(['/customers']);
+    });
   }
 }

@@ -8,7 +8,7 @@
 
         <div class="form-group mb-2">
             <label for="password">{{ "password" | titlecase }}</label>
-            <input ngModel id="password" name="password" type="password" class="form-control" autocomplete="off" required minlength="16" #password="ngModel" [ngClass]="{'is-invalid':password.invalid && password.touched, 'is-valid':password.valid && password.touched}">
+            <input ngModel id="password" name="password" type="password" class="form-control" autocomplete="off" required minlength="6" #password="ngModel" [ngClass]="{'is-invalid':password.invalid && password.touched, 'is-valid':password.valid && password.touched}">
             <span class="invalid-feedback">{{ 'Please enter a valid password' | textCapital }}</span>
         </div>
 

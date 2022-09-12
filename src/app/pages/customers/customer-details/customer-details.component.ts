@@ -10,9 +10,9 @@ import { CustomersService } from '../customers.service';
   ]
 })
 export class CustomerDetailsComponent {
-
-  customer: Customer | void = undefined;
   createdAt: any;
+  customer: Customer | void = undefined;
+
   constructor( private AR: ActivatedRoute, private CS: CustomersService ) {}
 
   ngOnInit(): void {
@@ -22,7 +22,7 @@ export class CustomerDetailsComponent {
         this.customer = customer;
         this.createdAt = new Date(customer.createdAt?.seconds * 1000)
       });
-    })
+    });
   }
 
 }

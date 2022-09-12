@@ -132,7 +132,7 @@
             </div>
             <div class="col-md-5 mb-2 form-group">
                 <label for="zip"><span class="text-danger"></span> {{ "zip" | titlecase }}</label><input [(ngModel)]="customer.address.zip"
-                    name="number" type="text" class="form-control" minlength="2" #zipField="ngModel" [ngClass]="{
+                    name="zip" type="text" class="form-control" minlength="2" #zipField="ngModel" [ngClass]="{
             'is-invalid': zipField.invalid && zipField.touched,
             'is-valid': zipField.valid && zipField.touched
           }" />
@@ -153,8 +153,8 @@
 
     <div class="row justify-content-center">
         <div class="col-md-10 mb-2">
-            <label for="notes">{{ "notes" | titlecase }}</label>
-            <textarea [(ngModel)]="customer.note" name="notes" class="form-control" cols="30" rows="5" #notesField="ngModel"></textarea>
+            <label for="note">{{ "notes" | titlecase }}</label>
+            <textarea [(ngModel)]="customer.note" name="note" class="form-control" cols="30" rows="5" #notesField="ngModel"></textarea>
         </div>
     </div>
     <div class="p-3 text-center">
@@ -165,7 +165,7 @@
             value="{{ 'reset' | titlecase }}" role="button" title="Reset form" />
 
         <button type="submit" class="btn btn-success ms-3" [disabled]="customerForm.form.invalid">
-            {{ "add customer" | titlecase }}
+            {{ btnText | titlecase }}
         </button>
     </div>
 </form>

@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UserService } from 'src/app/pages/Users/user.service';
 
 @Component({
   selector: 'app-logged-in',
   templateUrl: './logged-in.component.html',
   styleUrls: ['./logged-in.component.scss']
 })
-export class LoggedInComponent implements OnInit {
+export class LoggedInComponent {
 
-  constructor() { }
+  constructor(private US:UserService) { }
 
-  ngOnInit(): void {
+  logout(){
+    this.US.logout();
   }
 
 }

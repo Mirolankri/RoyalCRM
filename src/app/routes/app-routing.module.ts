@@ -12,26 +12,32 @@ import { NewCustomerComponent } from '../pages/Customers/new-customer/new-custom
 import { ErrorPageComponent } from '../pages/Error-page/error-page.component';
 import { LoginPageComponent } from '../pages/login-page/login-page.component';
 import { LogoutComponent } from '../pages/logout/logout.component';
-import { SignupComponent } from '../pages/signup/signup.component';
+import { SignupPageComponent } from '../pages/Users/signup-page/signup-page.component';
+import { AuthGuard } from './auth.guard';
+import { LoggedGuard } from './logged.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent },
+  // { path: '', component: LoginPageComponent,canActivate: [LoggedGuard] },
+  { path: '', component: LoginPageComponent,canActivate: [LoggedGuard] },
   // **** Side Nav Bar ****
-  { path: 'contacts', component: ContactComponent },
-  { path: 'contacts/new-contact', component: NewContactComponent },
-  { path: 'contacts/contact-details/:id', component: ContactDetailsComponent },
-  { path: 'contacts/edit-contact/:id', component: EditContactComponent },
+  { path: 'contacts', component: ContactComponent, canActivate: [AuthGuard] },
+  { path: 'contacts/new-contact', component: NewContactComponent, canActivate: [AuthGuard] },
+  { path: 'contacts/contact-details/:id', component: ContactDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'contacts/edit-contact/:id', component: EditContactComponent, canActivate: [AuthGuard] },
   // **** Top Nav Bar ****
   { path: 'about', component: AboutComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'customers', component: CustomersPageComponent },
-  { path: 'customers/new-customer', component: NewCustomerComponent },
-  { path: 'customers/customer-details/:id', component: CustomerDetailsComponent },
-  { path: 'customers/edit-customer/:id', component: EditCustomerComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginPageComponent },
+  { path: 'customers', component: CustomersPageComponent, canActivate: [AuthGuard] },
+  { path: 'customers/new-customer', component: NewCustomerComponent, canActivate: [AuthGuard] },
+  { path: 'customers/customer-details/:id', component: CustomerDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'customers/edit-customer/:id', component: EditCustomerComponent, canActivate: [AuthGuard] },
+  // { path: 'signup', component: SignupComponent },
+  { path:'signup', component: SignupPageComponent,canActivate: [LoggedGuard] },
+  { path: 'login', component: LoginPageComponent,canActivate: [LoggedGuard] },
+  // { path:'signup', component: SignupPageComponent,canActivate: [LoggedGuard] },
+  // { path: 'login', component: LoginPageComponent,canActivate: [LoggedGuard] },
   // **** Error Page ****
-  { path: '**', component: ErrorPageComponent }
+  { path: '**', component: ErrorPageComponent },
 ];
 
 @NgModule({

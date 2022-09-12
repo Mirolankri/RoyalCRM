@@ -2,8 +2,8 @@
 </page-header>
 
 <div class="my-2">
-  <a routerLink="/contacts" class="btn btn-outline-dark"><i class="fas fa-arrow-alt-circle-left"></i>
-    {{ "back" | titlecase }}</a>
+  <a routerLink="/contacts" class="btn btn-outline-dark"><i class="fas fa-arrow-alt-circle-left"></i> {{ "back" |
+    titlecase }}</a>
 </div>
 
 <div *ngIf="contact; else nocontact">
@@ -56,9 +56,9 @@
                     <td>{{ contact.address?.houseNumber }}</td>
                     <td>
                       {{
-                        contact.address?.zip
-                          ? contact.address?.zip
-                          : ("not none" | titlecase)
+                      contact.address?.zip
+                      ? contact.address?.zip
+                      : ("not none" | titlecase)
                       }}
                     </td>
                   </tr>

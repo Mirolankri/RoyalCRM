@@ -17,3 +17,9 @@
 .top-nav-active{
     font-weight: 600;
 }
+
+.cursor-pointer{
+    &:hover{
+        cursor: pointer;
+    }
+}

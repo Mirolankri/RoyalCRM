@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Customer } from '../customer';
 import { CustomersService } from '../customers.service';
 
 @Component({
@@ -15,11 +16,14 @@ export class NewCustomerComponent {
 
   onSubmit({valid, value}: NgForm){
     if(valid){
-      this.customersService.add(value,()=>
-        this.routerService.navigate(['/customers'])
-      );
+      this.customersService.add(value, ()=>this.routerService.navigate(['/customers']));
     }
   }
+
+  // onSubmit(customer: Customer) {
+  //     this.customersService.add(customer);
+  //     this.routerService.navigate(['/customers']);
+  // }
 
   resetForm(form: NgForm){
     form.resetForm();

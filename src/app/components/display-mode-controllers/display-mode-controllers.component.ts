@@ -1,18 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Controller } from './controller';
 
 @Component({
-  selector: 'app-display-mode-controllers',
+  selector: 'display-mode-controllers',
   templateUrl: './display-mode-controllers.component.html',
-  styleUrls: ['./display-mode-controllers.component.scss']
+  styles: [
+  ]
 })
-export class DisplayModeControllersComponent implements OnInit {
+export class DisplayModeControllersComponent {
   @Input() controllers: Array<Controller> = [];
   @Output() onChangeDisplay = new EventEmitter();
-  constructor() { }
 
-  ngOnInit(): void {
-  }
   onChangeDisplayMode(display: string) {
     this.onChangeDisplay.emit(display);
   }

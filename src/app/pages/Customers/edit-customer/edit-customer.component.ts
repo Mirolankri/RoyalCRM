@@ -20,8 +20,7 @@ export class EditCustomerComponent implements OnInit {
 
   onSubmit(customer: Customer){
     customer.createdAt = this.createdAt;
-    customer.id = this.id!;
-    this.CS.edit(customer,this.id!,()=>{
+    this.CS.edit(customer, this.id!, () => {
       this.router.navigate(['/customers']);
     });
   }
@@ -30,6 +29,7 @@ export class EditCustomerComponent implements OnInit {
     this.AR.paramMap.subscribe((param: ParamMap)=>{
       const id = param.get('id');
       this.id = id;
+
       this.CS.getCustomer(id!, (customer: Customer) => {
         this.customer = customer;
         this.createdAt = customer.createdAt;

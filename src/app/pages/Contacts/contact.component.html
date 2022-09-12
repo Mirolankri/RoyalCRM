@@ -1,25 +1,24 @@
 <page-header title="contacts" subtitle="Lists of contacts" icon="fas fa-users"></page-header>
 
+
 <div class="d-flex justify-content-between">
-  <div class="m-2">
-    <a routerLink="new-contact" class="btn  btn-outline-success">{{'add contact +' | titlecase}}</a>
-  </div>
-  <app-display-mode-controllers [controllers]="controllers" (onChangeDisplay)="onChangeDisplay($event)">
-  </app-display-mode-controllers>
+    <div class="m-2">
+        <a routerLink="new-contact" class="btn  btn-outline-success">{{'add contact +' | titlecase}}</a>
+    </div>
+
+    <display-mode-controllers [controllers]="controllers" (onChangeDisplay)="onChangeDisplay($event)">
+    </display-mode-controllers>
 </div>
+
 
 <search-bar [categories]="categories" (arrayFiltered)="onSearch($event)" [array]="contactsData"></search-bar>
 
-
 <div *ngIf="contacts && contacts.length; else noContancts">
+    <contacts-table *ngIf="display === 'table'" [contacts]="contacts"></contacts-table>
 
-  <app-contacts-table *ngIf="display === 'table'" [contacts]="contacts"></app-contacts-table>
-
-  <app-contacts-folder *ngIf="display === 'folder'" [contacts]="contacts" ></app-contacts-folder>
+    <contact-folder [contacts]="contacts" *ngIf="display === 'folder'"></contact-folder>
 </div>
 
-
-
 <ng-template #noContancts>
-  <td class="text-center" colspan="6">{{ 'no contacts found' | titlecase }}</td>
+    <td class="text-center" colspan="6">{{ 'no contacts found' | titlecase }}</td>
 </ng-template>

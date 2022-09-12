@@ -27,6 +27,8 @@ export class CustomerFormComponent {
     },
     note: ''
   }
+  
+  @Input() btnText: string = 'submit';
 
   onSubmit({ valid, value }: NgForm) {
     if (valid) this.submit.emit(value);

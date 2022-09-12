@@ -3,20 +3,18 @@ import { Contact } from '../../contact';
 import { ContactsService } from '../../contacts.service';
 
 @Component({
-  selector: 'app-contacts-table',
+  selector: 'contacts-table',
   templateUrl: './contacts-table.component.html',
   styles: [
   ]
 })
-export class ContactsTableComponent implements OnInit {
+export class ContactsTableComponent {
 
   @Input() contacts: Contact[] = [];
   @Output() onDeleteContacts = new EventEmitter();
 
-  constructor(private CS: ContactsService) {
+  constructor(private CS: ContactsService){
     this.contacts = CS.getAll();
-    console.log(this.contacts);
-    
   }
 
   deleteContact(e: MouseEvent, id: string) {
@@ -24,9 +22,6 @@ export class ContactsTableComponent implements OnInit {
     this.CS.delete(id);
     this.contacts = this.CS.getAll();
     this.onDeleteContacts.emit(this.contacts);
-  }
-
-  ngOnInit(): void {
   }
 
 }

@@ -1,44 +1,24 @@
 <page-header title="customers" subtitle="this is the customers page" icon="fas fa-users"></page-header>
 
-<div class="m-2">
+<div class="d-flex justify-content-between">
+  <div class="m-2">
     <a routerLink="new-customer" class="btn  btn-outline-success">{{'add customer +' | titlecase}}</a>
+  </div>
+
+  <display-mode-controllers [controllers]="controllers" (onChangeDisplay)="onChangeDisplay($event)">
+  </display-mode-controllers>
 </div>
 
-<search-bar class="d-flex justify-content-center" [categories]="categories" (arrayFiltered)="onSearch($event)" [array]="customersData"></search-bar>
+<search-bar *ngIf="customers && customers.length" [categories]="categories" [array]="customersRowData" (arrayFiltered)="onSearch($event)"></search-bar>
 
-<table *ngIf="customers && customers.length; else noCustomers" class="table">
-    <thead>
-      <tr>
-        <th>{{ "Num." | titlecase }}</th>
-        <th>{{'first name' | titlecase}}</th>
-        <th>{{'last name' | titlecase}}</th>
-        <th>{{'phone' | titlecase}}</th>
-        <th>{{'email' | titlecase}}</th>
-        <th>{{'edit' | titlecase}}</th>
-        <th>{{'delete' | titlecase}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        [ngClass]="odd ? 'alert-success' : 'bg-light'"
-        *ngFor="let customer of customers; index as i; odd as odd"
-        [routerLink]="['customer-details', customer.id]" role="button"
-      >
-        <td>{{ i + 1 }}</td>
-        <td>{{ customer.firstName | textCapital }}</td>
-        <td>{{ customer.lastName | textCapital }}</td>
-        <td>{{ customer.phone }}</td>
-        <td>{{ customer.email }}</td>
-        <td><a class="btn btn-outline-dark" [routerLink]="['edit-customer', customer.id]" role="button">
-          <i class="fa-solid fa-pen-to-square"></i>
-        </a></td>
-        <td><button class="btn btn-outline-dark" (click)="deleteCustomer($event, customer.id!)"><i class="fas fa-trash"></i></button></td>
-      </tr>
-    </tbody>
-  </table>
-  
+<div *ngIf="customers && customers.length; else noCustomers">
+  <customer-table *ngIf="display === 'table'" [customers]="customers"></customer-table>
+
+  <customers-folder *ngIf="display === 'folder'" [customers]="customers"></customers-folder>
+</div>
+
 <ng-template #noCustomers>
   <div class="p-2">
-    {{ "no Customers where found in DB" | textCapital }}
+    {{ "no Customers where found in the database" | textCapital }}
   </div>
 </ng-template>

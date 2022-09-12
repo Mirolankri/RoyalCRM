@@ -4,11 +4,9 @@
     <a routerLink="new-customer" class="btn  btn-outline-success">{{'add customer +' | titlecase}}</a>
 </div>
 
-<search-bar [categories]="categories" (arrayFiltered)="onSearch($event)" [array]="customersData"></search-bar>
+<search-bar class="d-flex justify-content-center" [categories]="categories" (arrayFiltered)="onSearch($event)" [array]="customersData"></search-bar>
 
-<customers-folder></customers-folder>
-
-<table *ngIf="customers.length; else noCustomers" class="table">
+<table *ngIf="customers && customers.length; else noCustomers" class="table">
     <thead>
       <tr>
         <th>{{ "Num." | titlecase }}</th>
@@ -41,6 +39,6 @@
   
 <ng-template #noCustomers>
   <div class="p-2">
-    {{ "no Customers where found in the database" | textCapital }}
+    {{ "no Customers where found in DB" | textCapital }}
   </div>
 </ng-template>

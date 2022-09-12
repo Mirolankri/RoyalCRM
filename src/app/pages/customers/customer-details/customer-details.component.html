@@ -35,6 +35,10 @@
             <th>{{ "phone" | titlecase }}</th>
             <td>{{ customer.phone }}</td>
           </tr>
+          <tr *ngIf="createdAt">
+            <th>{{ "Created at" | titlecase }}</th>
+            <td>{{ createdAt | date: 'dd/MM/yyyy' }}</td>
+          </tr>
           <tr>
             <th>{{ "address" | titlecase }}</th>
             <td>

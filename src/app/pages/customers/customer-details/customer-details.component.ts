@@ -12,13 +12,16 @@ import { CustomersService } from '../customers.service';
 export class CustomerDetailsComponent {
 
   customer: Customer | void = undefined;
-
+  createdAt: any;
   constructor( private AR: ActivatedRoute, private CS: CustomersService ) {}
 
   ngOnInit(): void {
     this.AR.paramMap.subscribe((param: ParamMap)=>{
       const id = param.get('id');
-      this.CS.getCustomer(id!, (customer: Customer | void) => {(this.customer = customer)});
+      this.CS.getCustomer(id!, (customer: Customer) => {
+        this.customer = customer;
+        this.createdAt = new Date(customer.createdAt?.seconds * 1000)
+      });
     })
   }
 

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "royal-crm-miro": {
+      "hosting": {
+        "royal-crm": [
+          "royal-crm-miro"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "royal-crm-miro"
+  }
+}

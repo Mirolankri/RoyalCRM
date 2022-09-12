@@ -15,8 +15,9 @@ export class NewCustomerComponent {
 
   onSubmit({valid, value}: NgForm){
     if(valid){
-      this.customersService.add(value);
-      this.routerService.navigate(['/customers']);
+      this.customersService.add(value,()=>
+        this.routerService.navigate(['/customers'])
+      );
     }
   }
 

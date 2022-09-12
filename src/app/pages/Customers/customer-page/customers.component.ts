@@ -16,10 +16,7 @@ export class CustomersPageComponent implements OnInit {
 
   constructor(private CS: CustomersService) {  }
 
-  ngOnInit(): void {
-    this.customersData = this.CS.getAll();
-    this.customers = [...this.customersData];
-  }
+
 
   onSearch(array: Customer[]) {
     this.customers = array;
@@ -29,5 +26,15 @@ export class CustomersPageComponent implements OnInit {
     e.stopPropagation();
     this.CS.delete(id);
     // this.customers = this.CS.getAll();
+  }
+
+  ngOnInit(): void {
+    // this.customersData = []
+    this.customersData = this.CS.getAll();
+    // this.customers = this.CS.getAll();
+    // console.log(this.customers);
+    this.customers = this.customersData
+    // this.customers = [...this.customersData];
+    
   }
 }

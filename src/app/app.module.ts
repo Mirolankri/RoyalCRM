@@ -9,17 +9,17 @@ import { AboutComponent } from './pages/about/about.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
-import { HeaderComponent } from './Layout/header/header.component';
-import { FooterComponent } from './Layout/footer/footer.component';
-import { MainComponent } from './Layout/main/main.component';
-import { SideNavComponent } from './Layout/main/side-nav/side-nav.component';
-import { LogoComponent } from './Layout/header/top-nav/logo/logo.component';
-import { HamburgerComponent } from './Layout/header/top-nav/hamburger/hamburger.component';
-import { RightMenuComponent } from './Layout/header/top-nav/right-menu/right-menu.component';
-import { LeftMenuComponent } from './Layout/header/top-nav/left-menu/left-menu.component';
-import { LoggedInComponent } from './Layout/header/top-nav/right-menu/logged-in/logged-in.component';
-import { LoginComponent } from './Layout/header/top-nav/right-menu/login/login.component';
-import { SideNavLinksComponent } from './Layout/main/side-nav/side-nav-links/side-nav-links.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { MainComponent } from './layout/main/main.component';
+import { SideNavComponent } from './layout/main/side-nav/side-nav.component';
+import { LogoComponent } from './layout/header/top-nav/logo/logo.component';
+import { HamburgerComponent } from './layout/header/top-nav/hamburger/hamburger.component';
+import { RightMenuComponent } from './layout/header/top-nav/right-menu/right-menu.component';
+import { LeftMenuComponent } from './layout/header/top-nav/left-menu/left-menu.component';
+import { LoggedInComponent } from './layout/header/top-nav/right-menu/logged-in/logged-in.component';
+import { LoginComponent } from './layout/header/top-nav/right-menu/login/login.component';
+import { SideNavLinksComponent } from './layout/main/side-nav/side-nav-links/side-nav-links.component';
 import { FormsModule } from '@angular/forms';
 import { TextCapitalPipe } from './pipes/text-capital.pipe';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -38,6 +38,10 @@ import { RxjsObservableComponent } from './components/rxjs-observable/rxjs-obser
 import { DisplayModeControllersComponent } from './components/display-mode-controllers/display-mode-controllers.component';
 import { ContactsTableComponent } from './pages/Contacts/contact-display-mode/contacts-table/contacts-table.component';
 import { ContactsFolderComponent } from './pages/Contacts/contact-display-mode/contacts-folder/contacts-folder.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -82,7 +86,10 @@ import { ContactsFolderComponent } from './pages/Contacts/contact-display-mode/c
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]
